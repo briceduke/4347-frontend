@@ -15,7 +15,7 @@ export async function POST(request: Request) {
 			`SELECT ${columnList} FROM ${table}${condition ? ` WHERE ${condition}` : ""};`,
 		);
 
-		return NextResponse.json(result);
+		return NextResponse.json(result.rows);
 	} catch (error) {
 		console.error(error);
 
