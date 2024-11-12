@@ -20,7 +20,7 @@ export default function AirlineDatabaseInterface() {
 	};
 
 	return (
-		<div className="container mx-auto p-4">
+		<div className="container mx-auto p-4 font-[family-name:var(--font-geist-sans)]">
 			<h1 className="text-2xl font-bold mb-4">Airport Database Interface</h1>
 			<div className="grid grid-cols-2 gap-4 mb-4">
 				<Button onClick={() => handleOptionSelect("query")}>Query</Button>
@@ -60,7 +60,7 @@ export default function AirlineDatabaseInterface() {
 						<CardTitle>Query Result</CardTitle>
 					</CardHeader>
 					<CardContent>
-						<pre className="bg-gray-100 p-4 rounded-md overflow-x-auto">
+						<pre className="bg-gray-100 p-4 rounded-md overflow-x-auto font-[family-name:var(--font-geist-mono)]">
 							{queryResult}
 						</pre>
 					</CardContent>
