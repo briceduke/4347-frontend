@@ -17,6 +17,8 @@ import {
 	SelectValue,
 } from "@/components/ui/select";
 import { validTableColumns, validTables } from "@/lib/schema";
+import { useQuery } from "@tanstack/react-query";
+import { Loader2 } from "lucide-react";
 import { type Dispatch, type SetStateAction, useState } from "react";
 import { MultiSelect } from "./ui/multi-select";
 
@@ -29,8 +31,9 @@ export function QueryCard({ setQueryResult }: QueryCardProps) {
 	const [queryColumns, setQueryColumns] = useState<string[]>([]);
 	const [queryCondition, setQueryCondition] = useState("");
 
-	const handleQuery = async () => {
-		try {
+	const { refetch, isLoading } = useQuery({
+		queryKey: ["query"],
+		queryFn: async () => {
 			const response = await fetch("/api/query", {
 				method: "POST",
 				headers: { "Content-Type": "application/json" },
@@ -42,10 +45,12 @@ export function QueryCard({ setQueryResult }: QueryCardProps) {
 			});
 			const data = await response.json();
 			setQueryResult(JSON.stringify(data, null, 2));
-		} catch (error) {
-			setQueryResult("Error executing query");
-		}
-	};
+		},
+		enabled: false,
+		refetchOnMount: false,
+		refetchOnReconnect: false,
+		refetchOnWindowFocus: false,
+	});
 
 	return (
 		<Card>
@@ -106,7 +111,10 @@ export function QueryCard({ setQueryResult }: QueryCardProps) {
 				</div>
 			</CardContent>
 			<CardFooter>
-				<Button onClick={handleQuery}>Execute Query</Button>
+				<Button onClick={() => refetch()} disabled={isLoading}>
+					{isLoading && <Loader2 className="animate-spin" />}
+					Execute Query
+				</Button>
 			</CardFooter>
 		</Card>
 	);

@@ -17,6 +17,8 @@ import {
 	SelectValue,
 } from "@/components/ui/select";
 import { validTables } from "@/lib/schema";
+import { useMutation } from "@tanstack/react-query";
+import { Loader2 } from "lucide-react";
 import { type Dispatch, type SetStateAction, useState } from "react";
 
 interface DeleteCardProps {
@@ -26,8 +28,9 @@ interface DeleteCardProps {
 export function DeleteCard({ setQueryResult }: DeleteCardProps) {
 	const [deleteData, setDeleteData] = useState({ table: "", condition: "" });
 
-	const handleDelete = async () => {
-		try {
+	const { mutate, isPending } = useMutation({
+		mutationKey: ["delete"],
+		mutationFn: async () => {
 			const response = await fetch("/api/delete", {
 				method: "POST",
 				headers: { "Content-Type": "application/json" },
@@ -38,10 +41,9 @@ export function DeleteCard({ setQueryResult }: DeleteCardProps) {
 			});
 			const data = await response.json();
 			setQueryResult(JSON.stringify(data, null, 2));
-		} catch (error) {
-			setQueryResult("Error deleting data");
-		}
-	};
+		},
+		onError: () => setQueryResult("Error deleting data"),
+	});
 
 	return (
 		<Card>
@@ -86,7 +88,10 @@ export function DeleteCard({ setQueryResult }: DeleteCardProps) {
 				</div>
 			</CardContent>
 			<CardFooter>
-				<Button onClick={handleDelete}>Delete Data</Button>
+				<Button onClick={() => mutate()} disabled={isPending}>
+					{isPending && <Loader2 className="animate-spin" />}
+					Delete Data
+				</Button>
 			</CardFooter>
 		</Card>
 	);

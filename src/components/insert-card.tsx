@@ -17,6 +17,8 @@ import {
 	SelectValue,
 } from "@/components/ui/select";
 import { validTableColumns, validTables } from "@/lib/schema";
+import { useMutation } from "@tanstack/react-query";
+import { Loader2 } from "lucide-react";
 import { type Dispatch, type SetStateAction, useEffect, useState } from "react";
 
 interface InsertCardProps {
@@ -48,8 +50,9 @@ export function InsertCard({
 		}
 	}, [insertTable]);
 
-	const handleInsert = async () => {
-		try {
+	const { mutate, isPending } = useMutation({
+		mutationKey: ["insert"],
+		mutationFn: async () => {
 			const response = await fetch("/api/insert", {
 				method: "POST",
 				headers: { "Content-Type": "application/json" },
@@ -60,10 +63,9 @@ export function InsertCard({
 			});
 			const data = await response.json();
 			setQueryResult(JSON.stringify(data, null, 2));
-		} catch (error) {
-			setQueryResult("Error inserting data");
-		}
-	};
+		},
+		onError: () => setQueryResult("Error inserting data"),
+	});
 
 	return (
 		<Card>
@@ -111,7 +113,10 @@ export function InsertCard({
 				</div>
 			</CardContent>
 			<CardFooter>
-				<Button onClick={handleInsert}>Insert Data</Button>
+				<Button onClick={() => mutate()} disabled={isPending}>
+					{isPending && <Loader2 className="animate-spin" />}
+					Insert Data
+				</Button>
 			</CardFooter>
 		</Card>
 	);

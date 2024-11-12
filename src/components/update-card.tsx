@@ -17,6 +17,8 @@ import {
 	SelectValue,
 } from "@/components/ui/select";
 import { validTableColumns, validTables } from "@/lib/schema";
+import { useMutation } from "@tanstack/react-query";
+import { Loader2 } from "lucide-react";
 import { type Dispatch, type SetStateAction, useState } from "react";
 import { MultiSelect } from "./ui/multi-select";
 
@@ -35,8 +37,9 @@ export function UpdateCard({
 	const [updateColumns, setUpdateColumns] = useState<string[]>([]);
 	const [updateCondition, setUpdateCondition] = useState("");
 
-	const handleUpdate = async () => {
-		try {
+	const { mutate, isPending } = useMutation({
+		mutationKey: ["update"],
+		mutationFn: async () => {
 			const response = await fetch("/api/update", {
 				method: "POST",
 				headers: { "Content-Type": "application/json" },
@@ -49,10 +52,9 @@ export function UpdateCard({
 			});
 			const data = await response.json();
 			setQueryResult(JSON.stringify(data, null, 2));
-		} catch (error) {
-			setQueryResult("Error updating data");
-		}
-	};
+		},
+		onError: () => setQueryResult("Error updating data"),
+	});
 
 	return (
 		<Card>
@@ -121,7 +123,10 @@ export function UpdateCard({
 				</div>
 			</CardContent>
 			<CardFooter>
-				<Button onClick={handleUpdate}>Update Data</Button>
+				<Button onClick={() => mutate()} disabled={isPending}>
+					{isPending && <Loader2 className="animate-spin" />}
+					Update Data
+				</Button>
 			</CardFooter>
 		</Card>
 	);
