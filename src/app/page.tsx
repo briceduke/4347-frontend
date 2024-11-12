@@ -21,13 +21,13 @@ export default function AirlineDatabaseInterface() {
 
 	return (
 		<div className="container mx-auto p-4">
-			<h1 className="text-2xl font-bold mb-4">Airline Database Interface</h1>
+			<h1 className="text-2xl font-bold mb-4">Airport Database Interface</h1>
 			<div className="grid grid-cols-2 gap-4 mb-4">
-				<Button onClick={() => handleOptionSelect("query")}>1. Query</Button>
-				<Button onClick={() => handleOptionSelect("insert")}>2. Insert</Button>
-				<Button onClick={() => handleOptionSelect("delete")}>3. Delete</Button>
-				<Button onClick={() => handleOptionSelect("update")}>4. Update</Button>
-				<Button onClick={() => handleOptionSelect("")}>5. Quit</Button>
+				<Button onClick={() => handleOptionSelect("query")}>Query</Button>
+				<Button onClick={() => handleOptionSelect("insert")}>Insert</Button>
+				<Button onClick={() => handleOptionSelect("delete")}>Delete</Button>
+				<Button onClick={() => handleOptionSelect("update")}>Update</Button>
+				<Button onClick={() => handleOptionSelect("")}>Quit</Button>
 			</div>
 
 			{selectedOption === "query" && (
