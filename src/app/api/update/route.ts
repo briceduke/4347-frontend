@@ -17,7 +17,7 @@ export async function POST(request: Request) {
 			`UPDATE ${table} SET ${setClause} WHERE ${condition}`,
 		);
 
-		return NextResponse.json(result);
+		return NextResponse.json({ success: !!result.rowCount });
 	} catch (error) {
 		if (error instanceof z.ZodError) {
 			return NextResponse.json({ error: error.errors }, { status: 400 });

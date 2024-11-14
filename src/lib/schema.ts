@@ -7,6 +7,8 @@ export const validTables = [
 	"flights",
 	"passengers",
 	"employees",
+	"pilot",
+	"flight_attendant",
 ] as const;
 
 export const validTableColumns = {
@@ -51,9 +53,9 @@ export const validTableColumns = {
 		"fname",
 		"lname",
 		"midInit",
-		"license_id",
-		"plane_id",
 	],
+	pilot: ["employee_id", "license_id", "plane_id"],
+	flight_attendant: ["employee_id", "plane_id"],
 };
 
 export const querySchema = z
