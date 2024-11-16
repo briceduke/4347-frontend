@@ -6,6 +6,7 @@ import { QueryCard } from "@/components/query-card";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { UpdateCard } from "@/components/update-card";
+import Link from "next/link";
 import { useState } from "react";
 
 export default function AirlineDatabaseInterface() {
@@ -32,6 +33,9 @@ export default function AirlineDatabaseInterface() {
 					<Button onClick={() => handleOptionSelect("insert")}>insert</Button>
 					<Button onClick={() => handleOptionSelect("delete")}>delete</Button>
 					<Button onClick={() => handleOptionSelect("update")}>update</Button>
+					<Button asChild>
+						<Link href={"/map"}>map</Link>
+					</Button>
 					<Button onClick={() => handleOptionSelect("")}>quit</Button>
 				</CardContent>
 			</Card>
