@@ -102,3 +102,8 @@ export const updateSchema = z
 		},
 		{ message: "Invalid column(s) for the selected table" },
 	);
+
+export const distanceSchema = z.object({
+	to: z.string().min(1),
+	from: z.string().min(1),
+});
