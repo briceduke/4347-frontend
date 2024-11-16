@@ -32,9 +32,7 @@ const fetchAirportDistance = async (
 	from: string,
 	to: string,
 ): Promise<AirportData> => {
-	const response = await fetch(
-		`http://localhost:3000/api/distance?from=${from}&to=${to}`,
-	);
+	const response = await fetch(`/api/distance?from=${from}&to=${to}`);
 	if (!response.ok) {
 		throw new Error("Network response was not ok");
 	}
