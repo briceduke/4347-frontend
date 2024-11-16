@@ -135,17 +135,6 @@ export default function AirportDistanceMap() {
 									]}
 								>
 									<circle r={5} fill="#FF5533" />
-									<text
-										textAnchor="middle"
-										y={-10}
-										style={{
-											fontFamily: "system-ui",
-											fill: "#5D5A6D",
-											fontSize: "8px",
-										}}
-									>
-										{index === 0 ? fromAirport : toAirport}
-									</text>
 								</Marker>
 							))}
 						</ComposableMap>
