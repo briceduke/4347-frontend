@@ -55,9 +55,9 @@ export function QueryCard({ setQueryResult }: QueryCardProps) {
 	return (
 		<Card>
 			<CardHeader>
-				<CardTitle>Query</CardTitle>
+				<CardTitle>query</CardTitle>
 				<CardDescription>
-					Build your query using the options below:
+					build your query using the options below:
 				</CardDescription>
 			</CardHeader>
 			<CardContent>
@@ -113,7 +113,7 @@ export function QueryCard({ setQueryResult }: QueryCardProps) {
 			<CardFooter>
 				<Button onClick={() => refetch()} disabled={isLoading}>
 					{isLoading && <Loader2 className="animate-spin" />}
-					Execute Query
+					execute query
 				</Button>
 			</CardFooter>
 		</Card>

@@ -21,14 +21,20 @@ export default function AirlineDatabaseInterface() {
 
 	return (
 		<div className="container mx-auto p-4 font-[family-name:var(--font-geist-sans)]">
-			<h1 className="text-2xl font-bold mb-4">Airport Database Interface</h1>
-			<div className="grid grid-cols-2 gap-4 mb-4">
-				<Button onClick={() => handleOptionSelect("query")}>Query</Button>
-				<Button onClick={() => handleOptionSelect("insert")}>Insert</Button>
-				<Button onClick={() => handleOptionSelect("delete")}>Delete</Button>
-				<Button onClick={() => handleOptionSelect("update")}>Update</Button>
-				<Button onClick={() => handleOptionSelect("")}>Quit</Button>
-			</div>
+			<Card className="mb-4">
+				<CardHeader>
+					<h1 className="text-2xl font-bold mb-4">
+						airport database interface
+					</h1>
+				</CardHeader>
+				<CardContent className="grid grid-cols-2 gap-4 mb-4">
+					<Button onClick={() => handleOptionSelect("query")}>query</Button>
+					<Button onClick={() => handleOptionSelect("insert")}>insert</Button>
+					<Button onClick={() => handleOptionSelect("delete")}>delete</Button>
+					<Button onClick={() => handleOptionSelect("update")}>update</Button>
+					<Button onClick={() => handleOptionSelect("")}>quit</Button>
+				</CardContent>
+			</Card>
 
 			{selectedOption === "query" && (
 				<QueryCard setQueryResult={setQueryResult} />
@@ -57,7 +63,7 @@ export default function AirlineDatabaseInterface() {
 			{queryResult && (
 				<Card className="mt-4">
 					<CardHeader>
-						<CardTitle>Query Result</CardTitle>
+						<CardTitle>query result</CardTitle>
 					</CardHeader>
 					<CardContent>
 						<pre className="bg-gray-100 p-4 rounded-md overflow-x-auto font-[family-name:var(--font-geist-mono)]">

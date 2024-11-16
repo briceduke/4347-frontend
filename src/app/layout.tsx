@@ -2,12 +2,16 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import { Providers } from "@/components/providers";
+import Image from "next/image";
+import image from "../../public/image.png";
+import image2 from "../../public/image2.png";
 
 const geistSans = localFont({
-	src: "./fonts/GeistVF.woff",
+	src: "./fonts/ComicSansMS.ttf",
 	variable: "--font-geist-sans",
-	weight: "100 900",
+	weight: "400 900",
 });
+
 const geistMono = localFont({
 	src: "./fonts/GeistMonoVF.woff",
 	variable: "--font-geist-mono",
@@ -30,6 +34,20 @@ export default function RootLayout({
 				<body
 					className={`${geistSans.variable} ${geistMono.variable} antialiased`}
 				>
+					<Image
+						src={image}
+						alt="LEGO CITY"
+						width={400}
+						height={400}
+						className="absolute -z-10 right-4 bottom-4"
+					/>
+					<Image
+						src={image2}
+						alt="LEGO CITY"
+						width={400}
+						height={400}
+						className="absolute -z-10 left-4 bottom-4"
+					/>
 					{children}
 				</body>
 			</Providers>

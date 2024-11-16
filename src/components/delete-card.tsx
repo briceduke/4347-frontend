@@ -48,9 +48,9 @@ export function DeleteCard({ setQueryResult }: DeleteCardProps) {
 	return (
 		<Card>
 			<CardHeader>
-				<CardTitle>Delete</CardTitle>
+				<CardTitle>delete</CardTitle>
 				<CardDescription>
-					Enter table name and condition for deletion:
+					enter table name and condition for deletion:
 				</CardDescription>
 			</CardHeader>
 			<CardContent>
@@ -90,7 +90,7 @@ export function DeleteCard({ setQueryResult }: DeleteCardProps) {
 			<CardFooter>
 				<Button onClick={() => mutate()} disabled={isPending}>
 					{isPending && <Loader2 className="animate-spin" />}
-					Delete Data
+					delete data
 				</Button>
 			</CardFooter>
 		</Card>

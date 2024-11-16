@@ -70,8 +70,8 @@ export function InsertCard({
 	return (
 		<Card>
 			<CardHeader>
-				<CardTitle>Insert</CardTitle>
-				<CardDescription>Enter data for the selected table:</CardDescription>
+				<CardTitle>insert</CardTitle>
+				<CardDescription>enter data for the selected table:</CardDescription>
 			</CardHeader>
 			<CardContent>
 				<div className="grid w-full items-center gap-4">
@@ -115,7 +115,7 @@ export function InsertCard({
 			<CardFooter>
 				<Button onClick={() => mutate()} disabled={isPending}>
 					{isPending && <Loader2 className="animate-spin" />}
-					Insert Data
+					insert data
 				</Button>
 			</CardFooter>
 		</Card>

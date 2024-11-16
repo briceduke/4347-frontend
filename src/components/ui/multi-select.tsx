@@ -275,7 +275,7 @@ export const MultiSelect = React.forwardRef<
 					</Button>
 				</PopoverTrigger>
 				<PopoverContent
-					className="w-auto p-0"
+					className="w-auto p-0 font-[family-name:var(--font-geist-sans)]"
 					align="start"
 					onEscapeKeyDown={() => setIsPopoverOpen(false)}
 				>
@@ -285,7 +285,7 @@ export const MultiSelect = React.forwardRef<
 							onKeyDown={handleInputKeyDown}
 						/>
 						<CommandList>
-							<CommandEmpty>No results found.</CommandEmpty>
+							<CommandEmpty>no results found.</CommandEmpty>
 							<CommandGroup>
 								<CommandItem
 									key="all"
@@ -302,7 +302,7 @@ export const MultiSelect = React.forwardRef<
 									>
 										<CheckIcon className="h-4 w-4" />
 									</div>
-									<span>Select All</span>
+									<span>select all</span>
 								</CommandItem>
 								{options.map((option) => {
 									const isSelected = selectedValues.includes(option.value);

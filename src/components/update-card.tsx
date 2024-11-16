@@ -59,9 +59,9 @@ export function UpdateCard({
 	return (
 		<Card>
 			<CardHeader>
-				<CardTitle>Update</CardTitle>
+				<CardTitle>update</CardTitle>
 				<CardDescription>
-					Select table, columns to update, and condition:
+					select table, columns to update, and condition:
 				</CardDescription>
 			</CardHeader>
 			<CardContent>
@@ -125,7 +125,7 @@ export function UpdateCard({
 			<CardFooter>
 				<Button onClick={() => mutate()} disabled={isPending}>
 					{isPending && <Loader2 className="animate-spin" />}
-					Update Data
+					update data
 				</Button>
 			</CardFooter>
 		</Card>
